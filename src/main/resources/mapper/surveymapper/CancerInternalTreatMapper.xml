@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.uscilims.survey.dao.CancerInternalTreatMapper">
+  <resultMap id="BaseResultMap" type="com.uscilims.survey.entity.CancerInternalTreat">
+    <id column="tid" jdbcType="INTEGER" property="tid" />
+    <result column="cancerTreatId" jdbcType="INTEGER" property="cancerTreatId" />
+    <result column="treatClassification" jdbcType="VARCHAR" property="treatClassification" />
+    <result column="treatPlan" jdbcType="VARCHAR" property="treatPlan" />
+    <result column="treatCircle" jdbcType="VARCHAR" property="treatCircle" />
+    <result column="drugName" jdbcType="VARCHAR" property="drugName" />
+    <result column="dose" jdbcType="VARCHAR" property="dose" />
+    <result column="frequency" jdbcType="INTEGER" property="frequency" />
+    <result column="startTime" jdbcType="VARCHAR" property="startTime" />
+    <result column="endTime" jdbcType="VARCHAR" property="endTime" />
+    <result column="treatmentEvaluation" jdbcType="VARCHAR" property="treatmentEvaluation" />
+    <result column="inputName" jdbcType="VARCHAR" property="inputName" />
+    <result column="inputTime" jdbcType="VARCHAR" property="inputTime" />
+    <result column="updateName" jdbcType="VARCHAR" property="updateName" />
+    <result column="updateTime" jdbcType="VARCHAR" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    tid, cancerTreatId, treatClassification, treatPlan, treatCircle, drugName, dose, 
+    frequency, startTime, endTime, treatmentEvaluation, inputName, inputTime, updateName, 
+    updateTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cancertreat_internal
+    where tid = #{tid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from cancertreat_internal
+    where tid = #{tid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.uscilims.survey.entity.CancerInternalTreat">
+    insert into cancertreat_internal (tid, cancerTreatId, treatClassification, 
+      treatPlan, treatCircle, drugName, 
+      dose, frequency, startTime, 
+      endTime, treatmentEvaluation, inputName, 
+      inputTime, updateName, updateTime
+      )
+    values (#{tid,jdbcType=INTEGER}, #{cancerTreatId,jdbcType=INTEGER}, #{treatClassification,jdbcType=VARCHAR}, 
+      #{treatPlan,jdbcType=VARCHAR}, #{treatCircle,jdbcType=VARCHAR}, #{drugName,jdbcType=VARCHAR}, 
+      #{dose,jdbcType=VARCHAR}, #{frequency,jdbcType=INTEGER}, #{startTime,jdbcType=VARCHAR}, 
+      #{endTime,jdbcType=VARCHAR}, #{treatmentEvaluation,jdbcType=VARCHAR}, #{inputName,jdbcType=VARCHAR}, 
+      #{inputTime,jdbcType=VARCHAR}, #{updateName,jdbcType=VARCHAR}, #{updateTime,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.uscilims.survey.entity.CancerInternalTreat">
+    insert into cancertreat_internal
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tid != null">
+        tid,
+      </if>
+      <if test="cancerTreatId != null">
+        cancerTreatId,
+      </if>
+      <if test="treatClassification != null">
+        treatClassification,
+      </if>
+      <if test="treatPlan != null">
+        treatPlan,
+      </if>
+      <if test="treatCircle != null">
+        treatCircle,
+      </if>
+      <if test="drugName != null">
+        drugName,
+      </if>
+      <if test="dose != null">
+        dose,
+      </if>
+      <if test="frequency != null">
+        frequency,
+      </if>
+      <if test="startTime != null">
+        startTime,
+      </if>
+      <if test="endTime != null">
+        endTime,
+      </if>
+      <if test="treatmentEvaluation != null">
+        treatmentEvaluation,
+      </if>
+      <if test="inputName != null">
+        inputName,
+      </if>
+      <if test="inputTime != null">
+        inputTime,
+      </if>
+      <if test="updateName != null">
+        updateName,
+      </if>
+      <if test="updateTime != null">
+        updateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tid != null">
+        #{tid,jdbcType=INTEGER},
+      </if>
+      <if test="cancerTreatId != null">
+        #{cancerTreatId,jdbcType=INTEGER},
+      </if>
+      <if test="treatClassification != null">
+        #{treatClassification,jdbcType=VARCHAR},
+      </if>
+      <if test="treatPlan != null">
+        #{treatPlan,jdbcType=VARCHAR},
+      </if>
+      <if test="treatCircle != null">
+        #{treatCircle,jdbcType=VARCHAR},
+      </if>
+      <if test="drugName != null">
+        #{drugName,jdbcType=VARCHAR},
+      </if>
+      <if test="dose != null">
+        #{dose,jdbcType=VARCHAR},
+      </if>
+      <if test="frequency != null">
+        #{frequency,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=VARCHAR},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=VARCHAR},
+      </if>
+      <if test="treatmentEvaluation != null">
+        #{treatmentEvaluation,jdbcType=VARCHAR},
+      </if>
+      <if test="inputName != null">
+        #{inputName,jdbcType=VARCHAR},
+      </if>
+      <if test="inputTime != null">
+        #{inputTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateName != null">
+        #{updateName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.uscilims.survey.entity.CancerInternalTreat">
+    update cancertreat_internal
+    <set>
+      <if test="cancerTreatId != null">
+        cancerTreatId = #{cancerTreatId,jdbcType=INTEGER},
+      </if>
+      <if test="treatClassification != null">
+        treatClassification = #{treatClassification,jdbcType=VARCHAR},
+      </if>
+      <if test="treatPlan != null">
+        treatPlan = #{treatPlan,jdbcType=VARCHAR},
+      </if>
+      <if test="treatCircle != null">
+        treatCircle = #{treatCircle,jdbcType=VARCHAR},
+      </if>
+      <if test="drugName != null">
+        drugName = #{drugName,jdbcType=VARCHAR},
+      </if>
+      <if test="dose != null">
+        dose = #{dose,jdbcType=VARCHAR},
+      </if>
+      <if test="frequency != null">
+        frequency = #{frequency,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null">
+        startTime = #{startTime,jdbcType=VARCHAR},
+      </if>
+      <if test="endTime != null">
+        endTime = #{endTime,jdbcType=VARCHAR},
+      </if>
+      <if test="treatmentEvaluation != null">
+        treatmentEvaluation = #{treatmentEvaluation,jdbcType=VARCHAR},
+      </if>
+      <if test="inputName != null">
+        inputName = #{inputName,jdbcType=VARCHAR},
+      </if>
+      <if test="inputTime != null">
+        inputTime = #{inputTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateName != null">
+        updateName = #{updateName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        updateTime = #{updateTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where tid = #{tid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.uscilims.survey.entity.CancerInternalTreat">
+    update cancertreat_internal
+    set cancerTreatId = #{cancerTreatId,jdbcType=INTEGER},
+      treatClassification = #{treatClassification,jdbcType=VARCHAR},
+      treatPlan = #{treatPlan,jdbcType=VARCHAR},
+      treatCircle = #{treatCircle,jdbcType=VARCHAR},
+      drugName = #{drugName,jdbcType=VARCHAR},
+      dose = #{dose,jdbcType=VARCHAR},
+      frequency = #{frequency,jdbcType=INTEGER},
+      startTime = #{startTime,jdbcType=VARCHAR},
+      endTime = #{endTime,jdbcType=VARCHAR},
+      treatmentEvaluation = #{treatmentEvaluation,jdbcType=VARCHAR},
+      inputName = #{inputName,jdbcType=VARCHAR},
+      inputTime = #{inputTime,jdbcType=VARCHAR},
+      updateName = #{updateName,jdbcType=VARCHAR},
+      updateTime = #{updateTime,jdbcType=VARCHAR}
+    where tid = #{tid,jdbcType=INTEGER}
+  </update>
+</mapper>

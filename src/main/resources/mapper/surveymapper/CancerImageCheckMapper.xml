@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.uscilims.survey.dao.CancerImageCheckMapper">
+  <resultMap id="BaseResultMap" type="com.uscilims.survey.entity.CancerImageCheck">
+    <id column="tid" jdbcType="INTEGER" property="tid" />
+    <result column="reviewId" jdbcType="VARCHAR" property="reviewId" />
+    <result column="checkTime" jdbcType="VARCHAR" property="checkTime" />
+    <result column="havaTargetLesion" jdbcType="VARCHAR" property="havaTargetLesion" />
+    <result column="maxDiameterSum" jdbcType="DOUBLE" property="maxDiameterSum" />
+    <result column="targetLesionEvaluation" jdbcType="VARCHAR" property="targetLesionEvaluation" />
+    <result column="noTargetLesionEvaluation" jdbcType="VARCHAR" property="noTargetLesionEvaluation" />
+    <result column="haveNewTargetLesion" jdbcType="VARCHAR" property="haveNewTargetLesion" />
+    <result column="wholeEvalution" jdbcType="VARCHAR" property="wholeEvalution" />
+    <result column="inputName" jdbcType="VARCHAR" property="inputName" />
+    <result column="inputTime" jdbcType="VARCHAR" property="inputTime" />
+    <result column="updateName" jdbcType="VARCHAR" property="updateName" />
+    <result column="updateTime" jdbcType="VARCHAR" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    tid, reviewId, checkTime, havaTargetLesion, maxDiameterSum, targetLesionEvaluation, 
+    noTargetLesionEvaluation, haveNewTargetLesion, wholeEvalution, inputName, inputTime, 
+    updateName, updateTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cancercheck_image
+    where tid = #{tid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from cancercheck_image
+    where tid = #{tid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.uscilims.survey.entity.CancerImageCheck">
+    insert into cancercheck_image (tid, reviewId, checkTime, 
+      havaTargetLesion, maxDiameterSum, targetLesionEvaluation, 
+      noTargetLesionEvaluation, haveNewTargetLesion, 
+      wholeEvalution, inputName, inputTime, 
+      updateName, updateTime)
+    values (#{tid,jdbcType=INTEGER}, #{reviewId,jdbcType=VARCHAR}, #{checkTime,jdbcType=VARCHAR}, 
+      #{havaTargetLesion,jdbcType=VARCHAR}, #{maxDiameterSum,jdbcType=DOUBLE}, #{targetLesionEvaluation,jdbcType=VARCHAR}, 
+      #{noTargetLesionEvaluation,jdbcType=VARCHAR}, #{haveNewTargetLesion,jdbcType=VARCHAR}, 
+      #{wholeEvalution,jdbcType=VARCHAR}, #{inputName,jdbcType=VARCHAR}, #{inputTime,jdbcType=VARCHAR}, 
+      #{updateName,jdbcType=VARCHAR}, #{updateTime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.uscilims.survey.entity.CancerImageCheck">
+    insert into cancercheck_image
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tid != null">
+        tid,
+      </if>
+      <if test="reviewId != null">
+        reviewId,
+      </if>
+      <if test="checkTime != null">
+        checkTime,
+      </if>
+      <if test="havaTargetLesion != null">
+        havaTargetLesion,
+      </if>
+      <if test="maxDiameterSum != null">
+        maxDiameterSum,
+      </if>
+      <if test="targetLesionEvaluation != null">
+        targetLesionEvaluation,
+      </if>
+      <if test="noTargetLesionEvaluation != null">
+        noTargetLesionEvaluation,
+      </if>
+      <if test="haveNewTargetLesion != null">
+        haveNewTargetLesion,
+      </if>
+      <if test="wholeEvalution != null">
+        wholeEvalution,
+      </if>
+      <if test="inputName != null">
+        inputName,
+      </if>
+      <if test="inputTime != null">
+        inputTime,
+      </if>
+      <if test="updateName != null">
+        updateName,
+      </if>
+      <if test="updateTime != null">
+        updateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tid != null">
+        #{tid,jdbcType=INTEGER},
+      </if>
+      <if test="reviewId != null">
+        #{reviewId,jdbcType=VARCHAR},
+      </if>
+      <if test="checkTime != null">
+        #{checkTime,jdbcType=VARCHAR},
+      </if>
+      <if test="havaTargetLesion != null">
+        #{havaTargetLesion,jdbcType=VARCHAR},
+      </if>
+      <if test="maxDiameterSum != null">
+        #{maxDiameterSum,jdbcType=DOUBLE},
+      </if>
+      <if test="targetLesionEvaluation != null">
+        #{targetLesionEvaluation,jdbcType=VARCHAR},
+      </if>
+      <if test="noTargetLesionEvaluation != null">
+        #{noTargetLesionEvaluation,jdbcType=VARCHAR},
+      </if>
+      <if test="haveNewTargetLesion != null">
+        #{haveNewTargetLesion,jdbcType=VARCHAR},
+      </if>
+      <if test="wholeEvalution != null">
+        #{wholeEvalution,jdbcType=VARCHAR},
+      </if>
+      <if test="inputName != null">
+        #{inputName,jdbcType=VARCHAR},
+      </if>
+      <if test="inputTime != null">
+        #{inputTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateName != null">
+        #{updateName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.uscilims.survey.entity.CancerImageCheck">
+    update cancercheck_image
+    <set>
+      <if test="reviewId != null">
+        reviewId = #{reviewId,jdbcType=VARCHAR},
+      </if>
+      <if test="checkTime != null">
+        checkTime = #{checkTime,jdbcType=VARCHAR},
+      </if>
+      <if test="havaTargetLesion != null">
+        havaTargetLesion = #{havaTargetLesion,jdbcType=VARCHAR},
+      </if>
+      <if test="maxDiameterSum != null">
+        maxDiameterSum = #{maxDiameterSum,jdbcType=DOUBLE},
+      </if>
+      <if test="targetLesionEvaluation != null">
+        targetLesionEvaluation = #{targetLesionEvaluation,jdbcType=VARCHAR},
+      </if>
+      <if test="noTargetLesionEvaluation != null">
+        noTargetLesionEvaluation = #{noTargetLesionEvaluation,jdbcType=VARCHAR},
+      </if>
+      <if test="haveNewTargetLesion != null">
+        haveNewTargetLesion = #{haveNewTargetLesion,jdbcType=VARCHAR},
+      </if>
+      <if test="wholeEvalution != null">
+        wholeEvalution = #{wholeEvalution,jdbcType=VARCHAR},
+      </if>
+      <if test="inputName != null">
+        inputName = #{inputName,jdbcType=VARCHAR},
+      </if>
+      <if test="inputTime != null">
+        inputTime = #{inputTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateName != null">
+        updateName = #{updateName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        updateTime = #{updateTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where tid = #{tid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.uscilims.survey.entity.CancerImageCheck">
+    update cancercheck_image
+    set reviewId = #{reviewId,jdbcType=VARCHAR},
+      checkTime = #{checkTime,jdbcType=VARCHAR},
+      havaTargetLesion = #{havaTargetLesion,jdbcType=VARCHAR},
+      maxDiameterSum = #{maxDiameterSum,jdbcType=DOUBLE},
+      targetLesionEvaluation = #{targetLesionEvaluation,jdbcType=VARCHAR},
+      noTargetLesionEvaluation = #{noTargetLesionEvaluation,jdbcType=VARCHAR},
+      haveNewTargetLesion = #{haveNewTargetLesion,jdbcType=VARCHAR},
+      wholeEvalution = #{wholeEvalution,jdbcType=VARCHAR},
+      inputName = #{inputName,jdbcType=VARCHAR},
+      inputTime = #{inputTime,jdbcType=VARCHAR},
+      updateName = #{updateName,jdbcType=VARCHAR},
+      updateTime = #{updateTime,jdbcType=VARCHAR}
+    where tid = #{tid,jdbcType=INTEGER}
+  </update>
+</mapper>

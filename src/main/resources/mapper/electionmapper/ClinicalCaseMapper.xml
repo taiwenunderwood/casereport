@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.uscilims.election.dao.ClinicalCaseMapper">
+  <resultMap id="BaseResultMap" type="com.uscilims.election.entity.ClinicalCase">
+    <id column="tid" jdbcType="INTEGER" property="tid" />
+    <result column="projectNo" jdbcType="VARCHAR" property="projectNo" />
+    <result column="clinicalTestUnit" jdbcType="VARCHAR" property="clinicalTestUnit" />
+    <result column="fundedUnit" jdbcType="VARCHAR" property="fundedUnit" />
+    <result column="patientNo" jdbcType="VARCHAR" property="patientNo" />
+    <result column="patientSSNo" jdbcType="VARCHAR" property="patientSSNo" />
+    <result column="xmsx" jdbcType="VARCHAR" property="xmsx" />
+    <result column="centerid" jdbcType="VARCHAR" property="centerid" />
+    <result column="centername" jdbcType="VARCHAR" property="centername" />
+    <result column="searcherName" jdbcType="VARCHAR" property="searcherName" />
+    <result column="isTxStandard" jdbcType="VARCHAR" property="isTxStandard" />
+    <result column="isTxPopularCharacter" jdbcType="VARCHAR" property="isTxPopularCharacter" />
+    <result column="isTxPathologicDiagnosis" jdbcType="VARCHAR" property="isTxPathologicDiagnosis" />
+    <result column="visitNum" jdbcType="INTEGER" property="visitNum" />
+    <result column="isFinish" jdbcType="VARCHAR" property="isFinish" />
+    <result column="startTime" jdbcType="VARCHAR" property="startTime" />
+    <result column="endTime" jdbcType="VARCHAR" property="endTime" />
+    <result column="unfinishbz" jdbcType="VARCHAR" property="unfinishbz" />
+    <result column="patientStopTime" jdbcType="VARCHAR" property="patientStopTime" />
+    <result column="firstStop" jdbcType="VARCHAR" property="firstStop" />
+    <result column="otherManbz" jdbcType="VARCHAR" property="otherManbz" />
+    <result column="stopReason" jdbcType="VARCHAR" property="stopReason" />
+    <result column="withdrawTime" jdbcType="VARCHAR" property="withdrawTime" />
+    <result column="againstReason" jdbcType="VARCHAR" property="againstReason" />
+    <result column="loseVisitInfo" jdbcType="VARCHAR" property="loseVisitInfo" />
+    <result column="sponsorStopInfo" jdbcType="VARCHAR" property="sponsorStopInfo" />
+    <result column="other" jdbcType="VARCHAR" property="other" />
+    <result column="inputName" jdbcType="VARCHAR" property="inputName" />
+    <result column="inputTime" jdbcType="VARCHAR" property="inputTime" />
+    <result column="updateName" jdbcType="VARCHAR" property="updateName" />
+    <result column="updateTime" jdbcType="VARCHAR" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    tid, projectNo, clinicalTestUnit, fundedUnit, patientNo, patientSSNo, xmsx, centerid, 
+    centername, searcherName, isTxStandard, isTxPopularCharacter, isTxPathologicDiagnosis, 
+    visitNum, isFinish, startTime, endTime, unfinishbz, patientStopTime, firstStop, otherManbz, 
+    stopReason, withdrawTime, againstReason, loseVisitInfo, sponsorStopInfo, other, inputName, 
+    inputTime, updateName, updateTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from clinical_case
+    where tid = #{tid,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultType="com.uscilims.election.entity.ClinicalCase">
+    select * from clinical_case
+  </select>
+  <select id="selectByPage" resultType="com.uscilims.election.entity.ClinicalCase">
+    select * from clinical_case
+      <if test="start!=null and limit!=null">
+        limit #{start},#{limit}
+      </if>
+  </select>
+  <select id="selectCount" resultType="java.lang.Integer">
+    select count(1) from clinical_case
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from clinical_case
+    where tid = #{tid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.uscilims.election.entity.ClinicalCase">
+    insert into clinical_case (tid, projectNo, clinicalTestUnit,
+      fundedUnit, patientNo, patientSSNo, 
+      xmsx, centerid, centername, 
+      searcherName, isTxStandard, isTxPopularCharacter, 
+      isTxPathologicDiagnosis, visitNum, isFinish, 
+      startTime, endTime, unfinishbz, 
+      patientStopTime, firstStop, otherManbz, 
+      stopReason, withdrawTime, againstReason, 
+      loseVisitInfo, sponsorStopInfo, other, 
+      inputName, inputTime, updateName, 
+      updateTime)
+    values (#{tid,jdbcType=INTEGER}, #{projectNo,jdbcType=VARCHAR}, #{clinicalTestUnit,jdbcType=VARCHAR}, 
+      #{fundedUnit,jdbcType=VARCHAR}, #{patientNo,jdbcType=VARCHAR}, #{patientSSNo,jdbcType=VARCHAR}, 
+      #{xmsx,jdbcType=VARCHAR}, #{centerid,jdbcType=VARCHAR}, #{centername,jdbcType=VARCHAR}, 
+      #{searcherName,jdbcType=VARCHAR}, #{isTxStandard,jdbcType=VARCHAR}, #{isTxPopularCharacter,jdbcType=VARCHAR}, 
+      #{isTxPathologicDiagnosis,jdbcType=VARCHAR}, #{visitNum,jdbcType=INTEGER}, #{isFinish,jdbcType=VARCHAR}, 
+      #{startTime,jdbcType=VARCHAR}, #{endTime,jdbcType=VARCHAR}, #{unfinishbz,jdbcType=VARCHAR}, 
+      #{patientStopTime,jdbcType=VARCHAR}, #{firstStop,jdbcType=VARCHAR}, #{otherManbz,jdbcType=VARCHAR}, 
+      #{stopReason,jdbcType=VARCHAR}, #{withdrawTime,jdbcType=VARCHAR}, #{againstReason,jdbcType=VARCHAR}, 
+      #{loseVisitInfo,jdbcType=VARCHAR}, #{sponsorStopInfo,jdbcType=VARCHAR}, #{other,jdbcType=VARCHAR}, 
+      #{inputName,jdbcType=VARCHAR}, #{inputTime,jdbcType=VARCHAR}, #{updateName,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.uscilims.election.entity.ClinicalCase">
+    insert into clinical_case
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tid != null">
+        tid,
+      </if>
+      <if test="projectNo != null">
+        projectNo,
+      </if>
+      <if test="clinicalTestUnit != null">
+        clinicalTestUnit,
+      </if>
+      <if test="fundedUnit != null">
+        fundedUnit,
+      </if>
+      <if test="patientNo != null">
+        patientNo,
+      </if>
+      <if test="patientSSNo != null">
+        patientSSNo,
+      </if>
+      <if test="xmsx != null">
+        xmsx,
+      </if>
+      <if test="centerid != null">
+        centerid,
+      </if>
+      <if test="centername != null">
+        centername,
+      </if>
+      <if test="searcherName != null">
+        searcherName,
+      </if>
+      <if test="isTxStandard != null">
+        isTxStandard,
+      </if>
+      <if test="isTxPopularCharacter != null">
+        isTxPopularCharacter,
+      </if>
+      <if test="isTxPathologicDiagnosis != null">
+        isTxPathologicDiagnosis,
+      </if>
+      <if test="visitNum != null">
+        visitNum,
+      </if>
+      <if test="isFinish != null">
+        isFinish,
+      </if>
+      <if test="startTime != null">
+        startTime,
+      </if>
+      <if test="endTime != null">
+        endTime,
+      </if>
+      <if test="unfinishbz != null">
+        unfinishbz,
+      </if>
+      <if test="patientStopTime != null">
+        patientStopTime,
+      </if>
+      <if test="firstStop != null">
+        firstStop,
+      </if>
+      <if test="otherManbz != null">
+        otherManbz,
+      </if>
+      <if test="stopReason != null">
+        stopReason,
+      </if>
+      <if test="withdrawTime != null">
+        withdrawTime,
+      </if>
+      <if test="againstReason != null">
+        againstReason,
+      </if>
+      <if test="loseVisitInfo != null">
+        loseVisitInfo,
+      </if>
+      <if test="sponsorStopInfo != null">
+        sponsorStopInfo,
+      </if>
+      <if test="other != null">
+        other,
+      </if>
+      <if test="inputName != null">
+        inputName,
+      </if>
+      <if test="inputTime != null">
+        inputTime,
+      </if>
+      <if test="updateName != null">
+        updateName,
+      </if>
+      <if test="updateTime != null">
+        updateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tid != null">
+        #{tid,jdbcType=INTEGER},
+      </if>
+      <if test="projectNo != null">
+        #{projectNo,jdbcType=VARCHAR},
+      </if>
+      <if test="clinicalTestUnit != null">
+        #{clinicalTestUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="fundedUnit != null">
+        #{fundedUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="patientNo != null">
+        #{patientNo,jdbcType=VARCHAR},
+      </if>
+      <if test="patientSSNo != null">
+        #{patientSSNo,jdbcType=VARCHAR},
+      </if>
+      <if test="xmsx != null">
+        #{xmsx,jdbcType=VARCHAR},
+      </if>
+      <if test="centerid != null">
+        #{centerid,jdbcType=VARCHAR},
+      </if>
+      <if test="centername != null">
+        #{centername,jdbcType=VARCHAR},
+      </if>
+      <if test="searcherName != null">
+        #{searcherName,jdbcType=VARCHAR},
+      </if>
+      <if test="isTxStandard != null">
+        #{isTxStandard,jdbcType=VARCHAR},
+      </if>
+      <if test="isTxPopularCharacter != null">
+        #{isTxPopularCharacter,jdbcType=VARCHAR},
+      </if>
+      <if test="isTxPathologicDiagnosis != null">
+        #{isTxPathologicDiagnosis,jdbcType=VARCHAR},
+      </if>
+      <if test="visitNum != null">
+        #{visitNum,jdbcType=INTEGER},
+      </if>
+      <if test="isFinish != null">
+        #{isFinish,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=VARCHAR},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=VARCHAR},
+      </if>
+      <if test="unfinishbz != null">
+        #{unfinishbz,jdbcType=VARCHAR},
+      </if>
+      <if test="patientStopTime != null">
+        #{patientStopTime,jdbcType=VARCHAR},
+      </if>
+      <if test="firstStop != null">
+        #{firstStop,jdbcType=VARCHAR},
+      </if>
+      <if test="otherManbz != null">
+        #{otherManbz,jdbcType=VARCHAR},
+      </if>
+      <if test="stopReason != null">
+        #{stopReason,jdbcType=VARCHAR},
+      </if>
+      <if test="withdrawTime != null">
+        #{withdrawTime,jdbcType=VARCHAR},
+      </if>
+      <if test="againstReason != null">
+        #{againstReason,jdbcType=VARCHAR},
+      </if>
+      <if test="loseVisitInfo != null">
+        #{loseVisitInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="sponsorStopInfo != null">
+        #{sponsorStopInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="other != null">
+        #{other,jdbcType=VARCHAR},
+      </if>
+      <if test="inputName != null">
+        #{inputName,jdbcType=VARCHAR},
+      </if>
+      <if test="inputTime != null">
+        #{inputTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateName != null">
+        #{updateName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.uscilims.election.entity.ClinicalCase">
+    update clinical_case
+    <set>
+      <if test="projectNo != null">
+        projectNo = #{projectNo,jdbcType=VARCHAR},
+      </if>
+      <if test="clinicalTestUnit != null">
+        clinicalTestUnit = #{clinicalTestUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="fundedUnit != null">
+        fundedUnit = #{fundedUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="patientNo != null">
+        patientNo = #{patientNo,jdbcType=VARCHAR},
+      </if>
+      <if test="patientSSNo != null">
+        patientSSNo = #{patientSSNo,jdbcType=VARCHAR},
+      </if>
+      <if test="xmsx != null">
+        xmsx = #{xmsx,jdbcType=VARCHAR},
+      </if>
+      <if test="centerid != null">
+        centerid = #{centerid,jdbcType=VARCHAR},
+      </if>
+      <if test="centername != null">
+        centername = #{centername,jdbcType=VARCHAR},
+      </if>
+      <if test="searcherName != null">
+        searcherName = #{searcherName,jdbcType=VARCHAR},
+      </if>
+      <if test="isTxStandard != null">
+        isTxStandard = #{isTxStandard,jdbcType=VARCHAR},
+      </if>
+      <if test="isTxPopularCharacter != null">
+        isTxPopularCharacter = #{isTxPopularCharacter,jdbcType=VARCHAR},
+      </if>
+      <if test="isTxPathologicDiagnosis != null">
+        isTxPathologicDiagnosis = #{isTxPathologicDiagnosis,jdbcType=VARCHAR},
+      </if>
+      <if test="visitNum != null">
+        visitNum = #{visitNum,jdbcType=INTEGER},
+      </if>
+      <if test="isFinish != null">
+        isFinish = #{isFinish,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        startTime = #{startTime,jdbcType=VARCHAR},
+      </if>
+      <if test="endTime != null">
+        endTime = #{endTime,jdbcType=VARCHAR},
+      </if>
+      <if test="unfinishbz != null">
+        unfinishbz = #{unfinishbz,jdbcType=VARCHAR},
+      </if>
+      <if test="patientStopTime != null">
+        patientStopTime = #{patientStopTime,jdbcType=VARCHAR},
+      </if>
+      <if test="firstStop != null">
+        firstStop = #{firstStop,jdbcType=VARCHAR},
+      </if>
+      <if test="otherManbz != null">
+        otherManbz = #{otherManbz,jdbcType=VARCHAR},
+      </if>
+      <if test="stopReason != null">
+        stopReason = #{stopReason,jdbcType=VARCHAR},
+      </if>
+      <if test="withdrawTime != null">
+        withdrawTime = #{withdrawTime,jdbcType=VARCHAR},
+      </if>
+      <if test="againstReason != null">
+        againstReason = #{againstReason,jdbcType=VARCHAR},
+      </if>
+      <if test="loseVisitInfo != null">
+        loseVisitInfo = #{loseVisitInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="sponsorStopInfo != null">
+        sponsorStopInfo = #{sponsorStopInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="other != null">
+        other = #{other,jdbcType=VARCHAR},
+      </if>
+      <if test="inputName != null">
+        inputName = #{inputName,jdbcType=VARCHAR},
+      </if>
+      <if test="inputTime != null">
+        inputTime = #{inputTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateName != null">
+        updateName = #{updateName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        updateTime = #{updateTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where tid = #{tid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.uscilims.election.entity.ClinicalCase">
+    update clinical_case
+    set projectNo = #{projectNo,jdbcType=VARCHAR},
+      clinicalTestUnit = #{clinicalTestUnit,jdbcType=VARCHAR},
+      fundedUnit = #{fundedUnit,jdbcType=VARCHAR},
+      patientNo = #{patientNo,jdbcType=VARCHAR},
+      patientSSNo = #{patientSSNo,jdbcType=VARCHAR},
+      xmsx = #{xmsx,jdbcType=VARCHAR},
+      centerid = #{centerid,jdbcType=VARCHAR},
+      centername = #{centername,jdbcType=VARCHAR},
+      searcherName = #{searcherName,jdbcType=VARCHAR},
+      isTxStandard = #{isTxStandard,jdbcType=VARCHAR},
+      isTxPopularCharacter = #{isTxPopularCharacter,jdbcType=VARCHAR},
+      isTxPathologicDiagnosis = #{isTxPathologicDiagnosis,jdbcType=VARCHAR},
+      visitNum = #{visitNum,jdbcType=INTEGER},
+      isFinish = #{isFinish,jdbcType=VARCHAR},
+      startTime = #{startTime,jdbcType=VARCHAR},
+      endTime = #{endTime,jdbcType=VARCHAR},
+      unfinishbz = #{unfinishbz,jdbcType=VARCHAR},
+      patientStopTime = #{patientStopTime,jdbcType=VARCHAR},
+      firstStop = #{firstStop,jdbcType=VARCHAR},
+      otherManbz = #{otherManbz,jdbcType=VARCHAR},
+      stopReason = #{stopReason,jdbcType=VARCHAR},
+      withdrawTime = #{withdrawTime,jdbcType=VARCHAR},
+      againstReason = #{againstReason,jdbcType=VARCHAR},
+      loseVisitInfo = #{loseVisitInfo,jdbcType=VARCHAR},
+      sponsorStopInfo = #{sponsorStopInfo,jdbcType=VARCHAR},
+      other = #{other,jdbcType=VARCHAR},
+      inputName = #{inputName,jdbcType=VARCHAR},
+      inputTime = #{inputTime,jdbcType=VARCHAR},
+      updateName = #{updateName,jdbcType=VARCHAR},
+      updateTime = #{updateTime,jdbcType=VARCHAR}
+    where tid = #{tid,jdbcType=INTEGER}
+  </update>
+</mapper>

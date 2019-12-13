@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.uscilims.survey.dao.ClinicalCaseReviewMapper">
+  <resultMap id="BaseResultMap" type="com.uscilims.survey.entity.ClinicalCaseReview">
+    <id column="tid" jdbcType="INTEGER" property="tid" />
+    <result column="patientNo" jdbcType="VARCHAR" property="patientNo" />
+    <result column="viewTime" jdbcType="VARCHAR" property="viewTime" />
+    <result column="reviewNum" jdbcType="INTEGER" property="reviewNum" />
+    <result column="reviewTime" jdbcType="VARCHAR" property="reviewTime" />
+    <result column="ECOGEvaluation" jdbcType="VARCHAR" property="ECOGEvaluation" />
+    <result column="evaluationReason" jdbcType="VARCHAR" property="evaluationReason" />
+    <result column="evaluationTime" jdbcType="VARCHAR" property="evaluationTime" />
+    <result column="score" jdbcType="VARCHAR" property="score" />
+    <result column="cancerSignCheck" jdbcType="VARCHAR" property="cancerSignCheck" />
+    <result column="checkTime" jdbcType="VARCHAR" property="checkTime" />
+    <result column="haveCarcinAntigenCheck" jdbcType="VARCHAR" property="haveCarcinAntigenCheck" />
+    <result column="haveImagingCheck" jdbcType="VARCHAR" property="haveImagingCheck" />
+    <result column="haveCancerTreatRecord" jdbcType="VARCHAR" property="haveCancerTreatRecord" />
+    <result column="inputName" jdbcType="VARCHAR" property="inputName" />
+    <result column="inputTime" jdbcType="VARCHAR" property="inputTime" />
+    <result column="updateName" jdbcType="VARCHAR" property="updateName" />
+    <result column="updateTime" jdbcType="VARCHAR" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    tid, patientNo, viewTime, reviewNum, reviewTime, ECOGEvaluation, evaluationReason, 
+    evaluationTime, score, cancerSignCheck, checkTime, haveCarcinAntigenCheck, haveImagingCheck, 
+    haveCancerTreatRecord, inputName, inputTime, updateName, updateTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from clinical_casereview
+    where tid = #{tid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from clinical_casereview
+    where tid = #{tid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.uscilims.survey.entity.ClinicalCaseReview">
+    insert into clinical_casereview (tid, patientNo, viewTime, 
+      reviewNum, reviewTime, ECOGEvaluation, 
+      evaluationReason, evaluationTime, score, 
+      cancerSignCheck, checkTime, haveCarcinAntigenCheck, 
+      haveImagingCheck, haveCancerTreatRecord, 
+      inputName, inputTime, updateName, 
+      updateTime)
+    values (#{tid,jdbcType=INTEGER}, #{patientNo,jdbcType=VARCHAR}, #{viewTime,jdbcType=VARCHAR}, 
+      #{reviewNum,jdbcType=INTEGER}, #{reviewTime,jdbcType=VARCHAR}, #{ECOGEvaluation,jdbcType=VARCHAR}, 
+      #{evaluationReason,jdbcType=VARCHAR}, #{evaluationTime,jdbcType=VARCHAR}, #{score,jdbcType=VARCHAR}, 
+      #{cancerSignCheck,jdbcType=VARCHAR}, #{checkTime,jdbcType=VARCHAR}, #{haveCarcinAntigenCheck,jdbcType=VARCHAR}, 
+      #{haveImagingCheck,jdbcType=VARCHAR}, #{haveCancerTreatRecord,jdbcType=VARCHAR}, 
+      #{inputName,jdbcType=VARCHAR}, #{inputTime,jdbcType=VARCHAR}, #{updateName,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.uscilims.survey.entity.ClinicalCaseReview">
+    insert into clinical_casereview
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tid != null">
+        tid,
+      </if>
+      <if test="patientNo != null">
+        patientNo,
+      </if>
+      <if test="viewTime != null">
+        viewTime,
+      </if>
+      <if test="reviewNum != null">
+        reviewNum,
+      </if>
+      <if test="reviewTime != null">
+        reviewTime,
+      </if>
+      <if test="ECOGEvaluation != null">
+        ECOGEvaluation,
+      </if>
+      <if test="evaluationReason != null">
+        evaluationReason,
+      </if>
+      <if test="evaluationTime != null">
+        evaluationTime,
+      </if>
+      <if test="score != null">
+        score,
+      </if>
+      <if test="cancerSignCheck != null">
+        cancerSignCheck,
+      </if>
+      <if test="checkTime != null">
+        checkTime,
+      </if>
+      <if test="haveCarcinAntigenCheck != null">
+        haveCarcinAntigenCheck,
+      </if>
+      <if test="haveImagingCheck != null">
+        haveImagingCheck,
+      </if>
+      <if test="haveCancerTreatRecord != null">
+        haveCancerTreatRecord,
+      </if>
+      <if test="inputName != null">
+        inputName,
+      </if>
+      <if test="inputTime != null">
+        inputTime,
+      </if>
+      <if test="updateName != null">
+        updateName,
+      </if>
+      <if test="updateTime != null">
+        updateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tid != null">
+        #{tid,jdbcType=INTEGER},
+      </if>
+      <if test="patientNo != null">
+        #{patientNo,jdbcType=VARCHAR},
+      </if>
+      <if test="viewTime != null">
+        #{viewTime,jdbcType=VARCHAR},
+      </if>
+      <if test="reviewNum != null">
+        #{reviewNum,jdbcType=INTEGER},
+      </if>
+      <if test="reviewTime != null">
+        #{reviewTime,jdbcType=VARCHAR},
+      </if>
+      <if test="ECOGEvaluation != null">
+        #{ECOGEvaluation,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluationReason != null">
+        #{evaluationReason,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluationTime != null">
+        #{evaluationTime,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null">
+        #{score,jdbcType=VARCHAR},
+      </if>
+      <if test="cancerSignCheck != null">
+        #{cancerSignCheck,jdbcType=VARCHAR},
+      </if>
+      <if test="checkTime != null">
+        #{checkTime,jdbcType=VARCHAR},
+      </if>
+      <if test="haveCarcinAntigenCheck != null">
+        #{haveCarcinAntigenCheck,jdbcType=VARCHAR},
+      </if>
+      <if test="haveImagingCheck != null">
+        #{haveImagingCheck,jdbcType=VARCHAR},
+      </if>
+      <if test="haveCancerTreatRecord != null">
+        #{haveCancerTreatRecord,jdbcType=VARCHAR},
+      </if>
+      <if test="inputName != null">
+        #{inputName,jdbcType=VARCHAR},
+      </if>
+      <if test="inputTime != null">
+        #{inputTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateName != null">
+        #{updateName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.uscilims.survey.entity.ClinicalCaseReview">
+    update clinical_casereview
+    <set>
+      <if test="patientNo != null">
+        patientNo = #{patientNo,jdbcType=VARCHAR},
+      </if>
+      <if test="viewTime != null">
+        viewTime = #{viewTime,jdbcType=VARCHAR},
+      </if>
+      <if test="reviewNum != null">
+        reviewNum = #{reviewNum,jdbcType=INTEGER},
+      </if>
+      <if test="reviewTime != null">
+        reviewTime = #{reviewTime,jdbcType=VARCHAR},
+      </if>
+      <if test="ECOGEvaluation != null">
+        ECOGEvaluation = #{ECOGEvaluation,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluationReason != null">
+        evaluationReason = #{evaluationReason,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluationTime != null">
+        evaluationTime = #{evaluationTime,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null">
+        score = #{score,jdbcType=VARCHAR},
+      </if>
+      <if test="cancerSignCheck != null">
+        cancerSignCheck = #{cancerSignCheck,jdbcType=VARCHAR},
+      </if>
+      <if test="checkTime != null">
+        checkTime = #{checkTime,jdbcType=VARCHAR},
+      </if>
+      <if test="haveCarcinAntigenCheck != null">
+        haveCarcinAntigenCheck = #{haveCarcinAntigenCheck,jdbcType=VARCHAR},
+      </if>
+      <if test="haveImagingCheck != null">
+        haveImagingCheck = #{haveImagingCheck,jdbcType=VARCHAR},
+      </if>
+      <if test="haveCancerTreatRecord != null">
+        haveCancerTreatRecord = #{haveCancerTreatRecord,jdbcType=VARCHAR},
+      </if>
+      <if test="inputName != null">
+        inputName = #{inputName,jdbcType=VARCHAR},
+      </if>
+      <if test="inputTime != null">
+        inputTime = #{inputTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateName != null">
+        updateName = #{updateName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        updateTime = #{updateTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where tid = #{tid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.uscilims.survey.entity.ClinicalCaseReview">
+    update clinical_casereview
+    set patientNo = #{patientNo,jdbcType=VARCHAR},
+      viewTime = #{viewTime,jdbcType=VARCHAR},
+      reviewNum = #{reviewNum,jdbcType=INTEGER},
+      reviewTime = #{reviewTime,jdbcType=VARCHAR},
+      ECOGEvaluation = #{ECOGEvaluation,jdbcType=VARCHAR},
+      evaluationReason = #{evaluationReason,jdbcType=VARCHAR},
+      evaluationTime = #{evaluationTime,jdbcType=VARCHAR},
+      score = #{score,jdbcType=VARCHAR},
+      cancerSignCheck = #{cancerSignCheck,jdbcType=VARCHAR},
+      checkTime = #{checkTime,jdbcType=VARCHAR},
+      haveCarcinAntigenCheck = #{haveCarcinAntigenCheck,jdbcType=VARCHAR},
+      haveImagingCheck = #{haveImagingCheck,jdbcType=VARCHAR},
+      haveCancerTreatRecord = #{haveCancerTreatRecord,jdbcType=VARCHAR},
+      inputName = #{inputName,jdbcType=VARCHAR},
+      inputTime = #{inputTime,jdbcType=VARCHAR},
+      updateName = #{updateName,jdbcType=VARCHAR},
+      updateTime = #{updateTime,jdbcType=VARCHAR}
+    where tid = #{tid,jdbcType=INTEGER}
+  </update>
+</mapper>

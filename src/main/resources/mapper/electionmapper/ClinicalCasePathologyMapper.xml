@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.uscilims.election.dao.ClinicalCasePathologyMapper">
+  <resultMap id="BaseResultMap" type="com.uscilims.election.entity.ClinicalCasePathology">
+    <id column="tid" jdbcType="INTEGER" property="tid" />
+    <result column="patientNo" jdbcType="VARCHAR" property="patientNo" />
+    <result column="treatTime" jdbcType="VARCHAR" property="treatTime" />
+    <result column="ajcc" jdbcType="VARCHAR" property="ajcc" />
+    <result column="fenhuadegree" jdbcType="VARCHAR" property="fenhuadegree" />
+    <result column="mianyizuhua" jdbcType="VARCHAR" property="mianyizuhua" />
+    <result column="ERout80Present" jdbcType="VARCHAR" property="ERout80Present" />
+    <result column="PRout80Present" jdbcType="VARCHAR" property="PRout80Present" />
+    <result column="HER2" jdbcType="VARCHAR" property="HER2" />
+    <result column="FISH" jdbcType="VARCHAR" property="FISH" />
+    <result column="Ki67" jdbcType="VARCHAR" property="ki67" />
+    <result column="cancerOrganSize" jdbcType="DOUBLE" property="cancerOrganSize" />
+    <result column="lymphTransfer" jdbcType="VARCHAR" property="lymphTransfer" />
+    <result column="operationTime" jdbcType="VARCHAR" property="operationTime" />
+    <result column="operationName" jdbcType="VARCHAR" property="operationName" />
+    <result column="operationNature" jdbcType="VARCHAR" property="operationNature" />
+    <result column="samplingTime" jdbcType="VARCHAR" property="samplingTime" />
+    <result column="inputName" jdbcType="VARCHAR" property="inputName" />
+    <result column="inputTime" jdbcType="VARCHAR" property="inputTime" />
+    <result column="updateName" jdbcType="VARCHAR" property="updateName" />
+    <result column="updateTime" jdbcType="VARCHAR" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    tid, patientNo, treatTime, ajcc, fenhuadegree, mianyizuhua, ERout80Present, PRout80Present, 
+    HER2, FISH, Ki67, cancerOrganSize, lymphTransfer, operationTime, operationName, operationNature, 
+    samplingTime, inputName, inputTime, updateName, updateTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from clinical_casepathology
+    where tid = #{tid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from clinical_casepathology
+    where tid = #{tid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.uscilims.election.entity.ClinicalCasePathology">
+    insert into clinical_casepathology (tid, patientNo, treatTime, 
+      ajcc, fenhuadegree, mianyizuhua, 
+      ERout80Present, PRout80Present, HER2, 
+      FISH, Ki67, cancerOrganSize, 
+      lymphTransfer, operationTime, operationName, 
+      operationNature, samplingTime, inputName, 
+      inputTime, updateName, updateTime
+      )
+    values (#{tid,jdbcType=INTEGER}, #{patientNo,jdbcType=VARCHAR}, #{treatTime,jdbcType=VARCHAR}, 
+      #{ajcc,jdbcType=VARCHAR}, #{fenhuadegree,jdbcType=VARCHAR}, #{mianyizuhua,jdbcType=VARCHAR}, 
+      #{ERout80Present,jdbcType=VARCHAR}, #{PRout80Present,jdbcType=VARCHAR}, #{HER2,jdbcType=VARCHAR}, 
+      #{FISH,jdbcType=VARCHAR}, #{ki67,jdbcType=VARCHAR}, #{cancerOrganSize,jdbcType=DOUBLE}, 
+      #{lymphTransfer,jdbcType=VARCHAR}, #{operationTime,jdbcType=VARCHAR}, #{operationName,jdbcType=VARCHAR}, 
+      #{operationNature,jdbcType=VARCHAR}, #{samplingTime,jdbcType=VARCHAR}, #{inputName,jdbcType=VARCHAR}, 
+      #{inputTime,jdbcType=VARCHAR}, #{updateName,jdbcType=VARCHAR}, #{updateTime,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.uscilims.election.entity.ClinicalCasePathology">
+    insert into clinical_casepathology
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tid != null">
+        tid,
+      </if>
+      <if test="patientNo != null">
+        patientNo,
+      </if>
+      <if test="treatTime != null">
+        treatTime,
+      </if>
+      <if test="ajcc != null">
+        ajcc,
+      </if>
+      <if test="fenhuadegree != null">
+        fenhuadegree,
+      </if>
+      <if test="mianyizuhua != null">
+        mianyizuhua,
+      </if>
+      <if test="ERout80Present != null">
+        ERout80Present,
+      </if>
+      <if test="PRout80Present != null">
+        PRout80Present,
+      </if>
+      <if test="HER2 != null">
+        HER2,
+      </if>
+      <if test="FISH != null">
+        FISH,
+      </if>
+      <if test="ki67 != null">
+        Ki67,
+      </if>
+      <if test="cancerOrganSize != null">
+        cancerOrganSize,
+      </if>
+      <if test="lymphTransfer != null">
+        lymphTransfer,
+      </if>
+      <if test="operationTime != null">
+        operationTime,
+      </if>
+      <if test="operationName != null">
+        operationName,
+      </if>
+      <if test="operationNature != null">
+        operationNature,
+      </if>
+      <if test="samplingTime != null">
+        samplingTime,
+      </if>
+      <if test="inputName != null">
+        inputName,
+      </if>
+      <if test="inputTime != null">
+        inputTime,
+      </if>
+      <if test="updateName != null">
+        updateName,
+      </if>
+      <if test="updateTime != null">
+        updateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tid != null">
+        #{tid,jdbcType=INTEGER},
+      </if>
+      <if test="patientNo != null">
+        #{patientNo,jdbcType=VARCHAR},
+      </if>
+      <if test="treatTime != null">
+        #{treatTime,jdbcType=VARCHAR},
+      </if>
+      <if test="ajcc != null">
+        #{ajcc,jdbcType=VARCHAR},
+      </if>
+      <if test="fenhuadegree != null">
+        #{fenhuadegree,jdbcType=VARCHAR},
+      </if>
+      <if test="mianyizuhua != null">
+        #{mianyizuhua,jdbcType=VARCHAR},
+      </if>
+      <if test="ERout80Present != null">
+        #{ERout80Present,jdbcType=VARCHAR},
+      </if>
+      <if test="PRout80Present != null">
+        #{PRout80Present,jdbcType=VARCHAR},
+      </if>
+      <if test="HER2 != null">
+        #{HER2,jdbcType=VARCHAR},
+      </if>
+      <if test="FISH != null">
+        #{FISH,jdbcType=VARCHAR},
+      </if>
+      <if test="ki67 != null">
+        #{ki67,jdbcType=VARCHAR},
+      </if>
+      <if test="cancerOrganSize != null">
+        #{cancerOrganSize,jdbcType=DOUBLE},
+      </if>
+      <if test="lymphTransfer != null">
+        #{lymphTransfer,jdbcType=VARCHAR},
+      </if>
+      <if test="operationTime != null">
+        #{operationTime,jdbcType=VARCHAR},
+      </if>
+      <if test="operationName != null">
+        #{operationName,jdbcType=VARCHAR},
+      </if>
+      <if test="operationNature != null">
+        #{operationNature,jdbcType=VARCHAR},
+      </if>
+      <if test="samplingTime != null">
+        #{samplingTime,jdbcType=VARCHAR},
+      </if>
+      <if test="inputName != null">
+        #{inputName,jdbcType=VARCHAR},
+      </if>
+      <if test="inputTime != null">
+        #{inputTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateName != null">
+        #{updateName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.uscilims.election.entity.ClinicalCasePathology">
+    update clinical_casepathology
+    <set>
+      <if test="patientNo != null">
+        patientNo = #{patientNo,jdbcType=VARCHAR},
+      </if>
+      <if test="treatTime != null">
+        treatTime = #{treatTime,jdbcType=VARCHAR},
+      </if>
+      <if test="ajcc != null">
+        ajcc = #{ajcc,jdbcType=VARCHAR},
+      </if>
+      <if test="fenhuadegree != null">
+        fenhuadegree = #{fenhuadegree,jdbcType=VARCHAR},
+      </if>
+      <if test="mianyizuhua != null">
+        mianyizuhua = #{mianyizuhua,jdbcType=VARCHAR},
+      </if>
+      <if test="ERout80Present != null">
+        ERout80Present = #{ERout80Present,jdbcType=VARCHAR},
+      </if>
+      <if test="PRout80Present != null">
+        PRout80Present = #{PRout80Present,jdbcType=VARCHAR},
+      </if>
+      <if test="HER2 != null">
+        HER2 = #{HER2,jdbcType=VARCHAR},
+      </if>
+      <if test="FISH != null">
+        FISH = #{FISH,jdbcType=VARCHAR},
+      </if>
+      <if test="ki67 != null">
+        Ki67 = #{ki67,jdbcType=VARCHAR},
+      </if>
+      <if test="cancerOrganSize != null">
+        cancerOrganSize = #{cancerOrganSize,jdbcType=DOUBLE},
+      </if>
+      <if test="lymphTransfer != null">
+        lymphTransfer = #{lymphTransfer,jdbcType=VARCHAR},
+      </if>
+      <if test="operationTime != null">
+        operationTime = #{operationTime,jdbcType=VARCHAR},
+      </if>
+      <if test="operationName != null">
+        operationName = #{operationName,jdbcType=VARCHAR},
+      </if>
+      <if test="operationNature != null">
+        operationNature = #{operationNature,jdbcType=VARCHAR},
+      </if>
+      <if test="samplingTime != null">
+        samplingTime = #{samplingTime,jdbcType=VARCHAR},
+      </if>
+      <if test="inputName != null">
+        inputName = #{inputName,jdbcType=VARCHAR},
+      </if>
+      <if test="inputTime != null">
+        inputTime = #{inputTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateName != null">
+        updateName = #{updateName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        updateTime = #{updateTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where tid = #{tid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.uscilims.election.entity.ClinicalCasePathology">
+    update clinical_casepathology
+    set patientNo = #{patientNo,jdbcType=VARCHAR},
+      treatTime = #{treatTime,jdbcType=VARCHAR},
+      ajcc = #{ajcc,jdbcType=VARCHAR},
+      fenhuadegree = #{fenhuadegree,jdbcType=VARCHAR},
+      mianyizuhua = #{mianyizuhua,jdbcType=VARCHAR},
+      ERout80Present = #{ERout80Present,jdbcType=VARCHAR},
+      PRout80Present = #{PRout80Present,jdbcType=VARCHAR},
+      HER2 = #{HER2,jdbcType=VARCHAR},
+      FISH = #{FISH,jdbcType=VARCHAR},
+      Ki67 = #{ki67,jdbcType=VARCHAR},
+      cancerOrganSize = #{cancerOrganSize,jdbcType=DOUBLE},
+      lymphTransfer = #{lymphTransfer,jdbcType=VARCHAR},
+      operationTime = #{operationTime,jdbcType=VARCHAR},
+      operationName = #{operationName,jdbcType=VARCHAR},
+      operationNature = #{operationNature,jdbcType=VARCHAR},
+      samplingTime = #{samplingTime,jdbcType=VARCHAR},
+      inputName = #{inputName,jdbcType=VARCHAR},
+      inputTime = #{inputTime,jdbcType=VARCHAR},
+      updateName = #{updateName,jdbcType=VARCHAR},
+      updateTime = #{updateTime,jdbcType=VARCHAR}
+    where tid = #{tid,jdbcType=INTEGER}
+  </update>
+</mapper>

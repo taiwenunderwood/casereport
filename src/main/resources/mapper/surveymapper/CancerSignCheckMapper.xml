@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.uscilims.survey.dao.CancerSignCheckMapper">
+  <resultMap id="BaseResultMap" type="com.uscilims.survey.entity.CancerSignCheck">
+    <id column="tid" jdbcType="INTEGER" property="tid" />
+    <result column="antigenCheckId" jdbcType="INTEGER" property="antigenCheckId" />
+    <result column="projectName" jdbcType="VARCHAR" property="projectName" />
+    <result column="checkResult" jdbcType="VARCHAR" property="checkResult" />
+    <result column="unit" jdbcType="VARCHAR" property="unit" />
+    <result column="clinicalValue" jdbcType="VARCHAR" property="clinicalValue" />
+    <result column="inputName" jdbcType="VARCHAR" property="inputName" />
+    <result column="inputTime" jdbcType="VARCHAR" property="inputTime" />
+    <result column="updateName" jdbcType="VARCHAR" property="updateName" />
+    <result column="updateTime" jdbcType="VARCHAR" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    tid, antigenCheckId, projectName, checkResult, unit, clinicalValue, inputName, inputTime, 
+    updateName, updateTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cancercheck_sign
+    where tid = #{tid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from cancercheck_sign
+    where tid = #{tid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.uscilims.survey.entity.CancerSignCheck">
+    insert into cancercheck_sign (tid, antigenCheckId, projectName, 
+      checkResult, unit, clinicalValue, 
+      inputName, inputTime, updateName, 
+      updateTime)
+    values (#{tid,jdbcType=INTEGER}, #{antigenCheckId,jdbcType=INTEGER}, #{projectName,jdbcType=VARCHAR}, 
+      #{checkResult,jdbcType=VARCHAR}, #{unit,jdbcType=VARCHAR}, #{clinicalValue,jdbcType=VARCHAR}, 
+      #{inputName,jdbcType=VARCHAR}, #{inputTime,jdbcType=VARCHAR}, #{updateName,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.uscilims.survey.entity.CancerSignCheck">
+    insert into cancercheck_sign
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tid != null">
+        tid,
+      </if>
+      <if test="antigenCheckId != null">
+        antigenCheckId,
+      </if>
+      <if test="projectName != null">
+        projectName,
+      </if>
+      <if test="checkResult != null">
+        checkResult,
+      </if>
+      <if test="unit != null">
+        unit,
+      </if>
+      <if test="clinicalValue != null">
+        clinicalValue,
+      </if>
+      <if test="inputName != null">
+        inputName,
+      </if>
+      <if test="inputTime != null">
+        inputTime,
+      </if>
+      <if test="updateName != null">
+        updateName,
+      </if>
+      <if test="updateTime != null">
+        updateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tid != null">
+        #{tid,jdbcType=INTEGER},
+      </if>
+      <if test="antigenCheckId != null">
+        #{antigenCheckId,jdbcType=INTEGER},
+      </if>
+      <if test="projectName != null">
+        #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="checkResult != null">
+        #{checkResult,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null">
+        #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="clinicalValue != null">
+        #{clinicalValue,jdbcType=VARCHAR},
+      </if>
+      <if test="inputName != null">
+        #{inputName,jdbcType=VARCHAR},
+      </if>
+      <if test="inputTime != null">
+        #{inputTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateName != null">
+        #{updateName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.uscilims.survey.entity.CancerSignCheck">
+    update cancercheck_sign
+    <set>
+      <if test="antigenCheckId != null">
+        antigenCheckId = #{antigenCheckId,jdbcType=INTEGER},
+      </if>
+      <if test="projectName != null">
+        projectName = #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="checkResult != null">
+        checkResult = #{checkResult,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null">
+        unit = #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="clinicalValue != null">
+        clinicalValue = #{clinicalValue,jdbcType=VARCHAR},
+      </if>
+      <if test="inputName != null">
+        inputName = #{inputName,jdbcType=VARCHAR},
+      </if>
+      <if test="inputTime != null">
+        inputTime = #{inputTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateName != null">
+        updateName = #{updateName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        updateTime = #{updateTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where tid = #{tid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.uscilims.survey.entity.CancerSignCheck">
+    update cancercheck_sign
+    set antigenCheckId = #{antigenCheckId,jdbcType=INTEGER},
+      projectName = #{projectName,jdbcType=VARCHAR},
+      checkResult = #{checkResult,jdbcType=VARCHAR},
+      unit = #{unit,jdbcType=VARCHAR},
+      clinicalValue = #{clinicalValue,jdbcType=VARCHAR},
+      inputName = #{inputName,jdbcType=VARCHAR},
+      inputTime = #{inputTime,jdbcType=VARCHAR},
+      updateName = #{updateName,jdbcType=VARCHAR},
+      updateTime = #{updateTime,jdbcType=VARCHAR}
+    where tid = #{tid,jdbcType=INTEGER}
+  </update>
+</mapper>

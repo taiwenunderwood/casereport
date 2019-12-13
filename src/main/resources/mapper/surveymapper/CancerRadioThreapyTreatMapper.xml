@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.uscilims.survey.dao.CancerRadioThreapyTreatMapper">
+  <resultMap id="BaseResultMap" type="com.uscilims.survey.entity.CancerRadioThreapyTreat">
+    <id column="tid" jdbcType="INTEGER" property="tid" />
+    <result column="cancerTreatId" jdbcType="INTEGER" property="cancerTreatId" />
+    <result column="startTime" jdbcType="VARCHAR" property="startTime" />
+    <result column="endTime" jdbcType="VARCHAR" property="endTime" />
+    <result column="radiotherapyPart" jdbcType="VARCHAR" property="radiotherapyPart" />
+    <result column="radioDose" jdbcType="VARCHAR" property="radioDose" />
+    <result column="radioType" jdbcType="VARCHAR" property="radioType" />
+    <result column="treatmentEvaluation" jdbcType="VARCHAR" property="treatmentEvaluation" />
+    <result column="inputName" jdbcType="VARCHAR" property="inputName" />
+    <result column="inputTime" jdbcType="VARCHAR" property="inputTime" />
+    <result column="updateName" jdbcType="VARCHAR" property="updateName" />
+    <result column="updateTime" jdbcType="VARCHAR" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    tid, cancerTreatId, startTime, endTime, radiotherapyPart, radioDose, radioType, treatmentEvaluation, 
+    inputName, inputTime, updateName, updateTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cancertreat_radiotherapy
+    where tid = #{tid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from cancertreat_radiotherapy
+    where tid = #{tid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.uscilims.survey.entity.CancerRadioThreapyTreat">
+    insert into cancertreat_radiotherapy (tid, cancerTreatId, startTime, 
+      endTime, radiotherapyPart, radioDose, 
+      radioType, treatmentEvaluation, inputName, 
+      inputTime, updateName, updateTime
+      )
+    values (#{tid,jdbcType=INTEGER}, #{cancerTreatId,jdbcType=INTEGER}, #{startTime,jdbcType=VARCHAR}, 
+      #{endTime,jdbcType=VARCHAR}, #{radiotherapyPart,jdbcType=VARCHAR}, #{radioDose,jdbcType=VARCHAR}, 
+      #{radioType,jdbcType=VARCHAR}, #{treatmentEvaluation,jdbcType=VARCHAR}, #{inputName,jdbcType=VARCHAR}, 
+      #{inputTime,jdbcType=VARCHAR}, #{updateName,jdbcType=VARCHAR}, #{updateTime,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.uscilims.survey.entity.CancerRadioThreapyTreat">
+    insert into cancertreat_radiotherapy
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tid != null">
+        tid,
+      </if>
+      <if test="cancerTreatId != null">
+        cancerTreatId,
+      </if>
+      <if test="startTime != null">
+        startTime,
+      </if>
+      <if test="endTime != null">
+        endTime,
+      </if>
+      <if test="radiotherapyPart != null">
+        radiotherapyPart,
+      </if>
+      <if test="radioDose != null">
+        radioDose,
+      </if>
+      <if test="radioType != null">
+        radioType,
+      </if>
+      <if test="treatmentEvaluation != null">
+        treatmentEvaluation,
+      </if>
+      <if test="inputName != null">
+        inputName,
+      </if>
+      <if test="inputTime != null">
+        inputTime,
+      </if>
+      <if test="updateName != null">
+        updateName,
+      </if>
+      <if test="updateTime != null">
+        updateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tid != null">
+        #{tid,jdbcType=INTEGER},
+      </if>
+      <if test="cancerTreatId != null">
+        #{cancerTreatId,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=VARCHAR},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=VARCHAR},
+      </if>
+      <if test="radiotherapyPart != null">
+        #{radiotherapyPart,jdbcType=VARCHAR},
+      </if>
+      <if test="radioDose != null">
+        #{radioDose,jdbcType=VARCHAR},
+      </if>
+      <if test="radioType != null">
+        #{radioType,jdbcType=VARCHAR},
+      </if>
+      <if test="treatmentEvaluation != null">
+        #{treatmentEvaluation,jdbcType=VARCHAR},
+      </if>
+      <if test="inputName != null">
+        #{inputName,jdbcType=VARCHAR},
+      </if>
+      <if test="inputTime != null">
+        #{inputTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateName != null">
+        #{updateName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.uscilims.survey.entity.CancerRadioThreapyTreat">
+    update cancertreat_radiotherapy
+    <set>
+      <if test="cancerTreatId != null">
+        cancerTreatId = #{cancerTreatId,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null">
+        startTime = #{startTime,jdbcType=VARCHAR},
+      </if>
+      <if test="endTime != null">
+        endTime = #{endTime,jdbcType=VARCHAR},
+      </if>
+      <if test="radiotherapyPart != null">
+        radiotherapyPart = #{radiotherapyPart,jdbcType=VARCHAR},
+      </if>
+      <if test="radioDose != null">
+        radioDose = #{radioDose,jdbcType=VARCHAR},
+      </if>
+      <if test="radioType != null">
+        radioType = #{radioType,jdbcType=VARCHAR},
+      </if>
+      <if test="treatmentEvaluation != null">
+        treatmentEvaluation = #{treatmentEvaluation,jdbcType=VARCHAR},
+      </if>
+      <if test="inputName != null">
+        inputName = #{inputName,jdbcType=VARCHAR},
+      </if>
+      <if test="inputTime != null">
+        inputTime = #{inputTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateName != null">
+        updateName = #{updateName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        updateTime = #{updateTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where tid = #{tid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.uscilims.survey.entity.CancerRadioThreapyTreat">
+    update cancertreat_radiotherapy
+    set cancerTreatId = #{cancerTreatId,jdbcType=INTEGER},
+      startTime = #{startTime,jdbcType=VARCHAR},
+      endTime = #{endTime,jdbcType=VARCHAR},
+      radiotherapyPart = #{radiotherapyPart,jdbcType=VARCHAR},
+      radioDose = #{radioDose,jdbcType=VARCHAR},
+      radioType = #{radioType,jdbcType=VARCHAR},
+      treatmentEvaluation = #{treatmentEvaluation,jdbcType=VARCHAR},
+      inputName = #{inputName,jdbcType=VARCHAR},
+      inputTime = #{inputTime,jdbcType=VARCHAR},
+      updateName = #{updateName,jdbcType=VARCHAR},
+      updateTime = #{updateTime,jdbcType=VARCHAR}
+    where tid = #{tid,jdbcType=INTEGER}
+  </update>
+</mapper>

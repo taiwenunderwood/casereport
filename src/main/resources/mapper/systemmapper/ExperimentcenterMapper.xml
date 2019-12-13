@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.uscilims.system.dao.ExperimentcenterMapper">
+  <resultMap id="BaseResultMap" type="com.uscilims.system.entity.Experimentcenter">
+    <id column="centerid" jdbcType="INTEGER" property="centerid" />
+    <result column="centername" jdbcType="VARCHAR" property="centername" />
+    <result column="inputName" jdbcType="VARCHAR" property="inputName" />
+    <result column="inputTime" jdbcType="VARCHAR" property="inputTime" />
+    <result column="updateName" jdbcType="VARCHAR" property="updateName" />
+    <result column="updateTime" jdbcType="VARCHAR" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    centerid, centername, inputName, inputTime, updateName, updateTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from experimentcenter
+    where centerid = #{centerid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from experimentcenter
+    where centerid = #{centerid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.uscilims.system.entity.Experimentcenter">
+    insert into experimentcenter (centerid, centername, inputName, 
+      inputTime, updateName, updateTime
+      )
+    values (#{centerid,jdbcType=INTEGER}, #{centername,jdbcType=VARCHAR}, #{inputName,jdbcType=VARCHAR}, 
+      #{inputTime,jdbcType=VARCHAR}, #{updateName,jdbcType=VARCHAR}, #{updateTime,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.uscilims.system.entity.Experimentcenter">
+    insert into experimentcenter
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="centerid != null">
+        centerid,
+      </if>
+      <if test="centername != null">
+        centername,
+      </if>
+      <if test="inputName != null">
+        inputName,
+      </if>
+      <if test="inputTime != null">
+        inputTime,
+      </if>
+      <if test="updateName != null">
+        updateName,
+      </if>
+      <if test="updateTime != null">
+        updateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="centerid != null">
+        #{centerid,jdbcType=INTEGER},
+      </if>
+      <if test="centername != null">
+        #{centername,jdbcType=VARCHAR},
+      </if>
+      <if test="inputName != null">
+        #{inputName,jdbcType=VARCHAR},
+      </if>
+      <if test="inputTime != null">
+        #{inputTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateName != null">
+        #{updateName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.uscilims.system.entity.Experimentcenter">
+    update experimentcenter
+    <set>
+      <if test="centername != null">
+        centername = #{centername,jdbcType=VARCHAR},
+      </if>
+      <if test="inputName != null">
+        inputName = #{inputName,jdbcType=VARCHAR},
+      </if>
+      <if test="inputTime != null">
+        inputTime = #{inputTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateName != null">
+        updateName = #{updateName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        updateTime = #{updateTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where centerid = #{centerid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.uscilims.system.entity.Experimentcenter">
+    update experimentcenter
+    set centername = #{centername,jdbcType=VARCHAR},
+      inputName = #{inputName,jdbcType=VARCHAR},
+      inputTime = #{inputTime,jdbcType=VARCHAR},
+      updateName = #{updateName,jdbcType=VARCHAR},
+      updateTime = #{updateTime,jdbcType=VARCHAR}
+    where centerid = #{centerid,jdbcType=INTEGER}
+  </update>
+</mapper>

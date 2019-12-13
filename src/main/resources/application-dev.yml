@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://60.205.191.63:3306/casereport?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true
+    username: root
+    password: Chenpingan@1
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+  resources:
+    static-locations: ["/lib/css/","/lib/js/"]
+
+
+server:
+  port: 8080
+  servlet:
+    context-path: /casereport
+
+mybatis:
+  mapper-locations: classpath:mapper/*/*.xml

@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.uscilims.election.dao.PersonbaseMapper">
+  <resultMap id="BaseResultMap" type="com.uscilims.election.entity.Personbase">
+    <id column="tid" jdbcType="INTEGER" property="tid" />
+    <result column="patientNo" jdbcType="VARCHAR" property="patientNo" />
+    <result column="birthday" jdbcType="VARCHAR" property="birthday" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="isMarry" jdbcType="VARCHAR" property="isMarry" />
+    <result column="isBirth" jdbcType="VARCHAR" property="isBirth" />
+    <result column="birthNum" jdbcType="INTEGER" property="birthNum" />
+    <result column="firthBirthAge" jdbcType="INTEGER" property="firthBirthAge" />
+    <result column="isMenopause" jdbcType="VARCHAR" property="isMenopause" />
+    <result column="menopauseAge" jdbcType="INTEGER" property="menopauseAge" />
+    <result column="nation" jdbcType="VARCHAR" property="nation" />
+    <result column="occupation" jdbcType="VARCHAR" property="occupation" />
+    <result column="height" jdbcType="DOUBLE" property="height" />
+    <result column="weight" jdbcType="DOUBLE" property="weight" />
+    <result column="cancerHistory" jdbcType="VARCHAR" property="cancerHistory" />
+    <result column="inputName" jdbcType="VARCHAR" property="inputName" />
+    <result column="inputTime" jdbcType="VARCHAR" property="inputTime" />
+    <result column="updateName" jdbcType="VARCHAR" property="updateName" />
+    <result column="updateTime" jdbcType="VARCHAR" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    tid, patientNo, birthday, sex, isMarry, isBirth, birthNum, firthBirthAge, isMenopause, 
+    menopauseAge, nation, occupation, height, weight, cancerHistory, inputName, inputTime, 
+    updateName, updateTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from person_base
+    where tid = #{tid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from person_base
+    where tid = #{tid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.uscilims.election.entity.Personbase">
+    insert into person_base (tid, patientNo, birthday, 
+      sex, isMarry, isBirth, 
+      birthNum, firthBirthAge, isMenopause, 
+      menopauseAge, nation, occupation, 
+      height, weight, cancerHistory, 
+      inputName, inputTime, updateName, 
+      updateTime)
+    values (#{tid,jdbcType=INTEGER}, #{patientNo,jdbcType=VARCHAR}, #{birthday,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=VARCHAR}, #{isMarry,jdbcType=VARCHAR}, #{isBirth,jdbcType=VARCHAR}, 
+      #{birthNum,jdbcType=INTEGER}, #{firthBirthAge,jdbcType=INTEGER}, #{isMenopause,jdbcType=VARCHAR}, 
+      #{menopauseAge,jdbcType=INTEGER}, #{nation,jdbcType=VARCHAR}, #{occupation,jdbcType=VARCHAR}, 
+      #{height,jdbcType=DOUBLE}, #{weight,jdbcType=DOUBLE}, #{cancerHistory,jdbcType=VARCHAR}, 
+      #{inputName,jdbcType=VARCHAR}, #{inputTime,jdbcType=VARCHAR}, #{updateName,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.uscilims.election.entity.Personbase">
+    insert into person_base
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tid != null">
+        tid,
+      </if>
+      <if test="patientNo != null">
+        patientNo,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="isMarry != null">
+        isMarry,
+      </if>
+      <if test="isBirth != null">
+        isBirth,
+      </if>
+      <if test="birthNum != null">
+        birthNum,
+      </if>
+      <if test="firthBirthAge != null">
+        firthBirthAge,
+      </if>
+      <if test="isMenopause != null">
+        isMenopause,
+      </if>
+      <if test="menopauseAge != null">
+        menopauseAge,
+      </if>
+      <if test="nation != null">
+        nation,
+      </if>
+      <if test="occupation != null">
+        occupation,
+      </if>
+      <if test="height != null">
+        height,
+      </if>
+      <if test="weight != null">
+        weight,
+      </if>
+      <if test="cancerHistory != null">
+        cancerHistory,
+      </if>
+      <if test="inputName != null">
+        inputName,
+      </if>
+      <if test="inputTime != null">
+        inputTime,
+      </if>
+      <if test="updateName != null">
+        updateName,
+      </if>
+      <if test="updateTime != null">
+        updateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tid != null">
+        #{tid,jdbcType=INTEGER},
+      </if>
+      <if test="patientNo != null">
+        #{patientNo,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="isMarry != null">
+        #{isMarry,jdbcType=VARCHAR},
+      </if>
+      <if test="isBirth != null">
+        #{isBirth,jdbcType=VARCHAR},
+      </if>
+      <if test="birthNum != null">
+        #{birthNum,jdbcType=INTEGER},
+      </if>
+      <if test="firthBirthAge != null">
+        #{firthBirthAge,jdbcType=INTEGER},
+      </if>
+      <if test="isMenopause != null">
+        #{isMenopause,jdbcType=VARCHAR},
+      </if>
+      <if test="menopauseAge != null">
+        #{menopauseAge,jdbcType=INTEGER},
+      </if>
+      <if test="nation != null">
+        #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="occupation != null">
+        #{occupation,jdbcType=VARCHAR},
+      </if>
+      <if test="height != null">
+        #{height,jdbcType=DOUBLE},
+      </if>
+      <if test="weight != null">
+        #{weight,jdbcType=DOUBLE},
+      </if>
+      <if test="cancerHistory != null">
+        #{cancerHistory,jdbcType=VARCHAR},
+      </if>
+      <if test="inputName != null">
+        #{inputName,jdbcType=VARCHAR},
+      </if>
+      <if test="inputTime != null">
+        #{inputTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateName != null">
+        #{updateName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.uscilims.election.entity.Personbase">
+    update person_base
+    <set>
+      <if test="patientNo != null">
+        patientNo = #{patientNo,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="isMarry != null">
+        isMarry = #{isMarry,jdbcType=VARCHAR},
+      </if>
+      <if test="isBirth != null">
+        isBirth = #{isBirth,jdbcType=VARCHAR},
+      </if>
+      <if test="birthNum != null">
+        birthNum = #{birthNum,jdbcType=INTEGER},
+      </if>
+      <if test="firthBirthAge != null">
+        firthBirthAge = #{firthBirthAge,jdbcType=INTEGER},
+      </if>
+      <if test="isMenopause != null">
+        isMenopause = #{isMenopause,jdbcType=VARCHAR},
+      </if>
+      <if test="menopauseAge != null">
+        menopauseAge = #{menopauseAge,jdbcType=INTEGER},
+      </if>
+      <if test="nation != null">
+        nation = #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="occupation != null">
+        occupation = #{occupation,jdbcType=VARCHAR},
+      </if>
+      <if test="height != null">
+        height = #{height,jdbcType=DOUBLE},
+      </if>
+      <if test="weight != null">
+        weight = #{weight,jdbcType=DOUBLE},
+      </if>
+      <if test="cancerHistory != null">
+        cancerHistory = #{cancerHistory,jdbcType=VARCHAR},
+      </if>
+      <if test="inputName != null">
+        inputName = #{inputName,jdbcType=VARCHAR},
+      </if>
+      <if test="inputTime != null">
+        inputTime = #{inputTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateName != null">
+        updateName = #{updateName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        updateTime = #{updateTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where tid = #{tid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.uscilims.election.entity.Personbase">
+    update person_base
+    set patientNo = #{patientNo,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      isMarry = #{isMarry,jdbcType=VARCHAR},
+      isBirth = #{isBirth,jdbcType=VARCHAR},
+      birthNum = #{birthNum,jdbcType=INTEGER},
+      firthBirthAge = #{firthBirthAge,jdbcType=INTEGER},
+      isMenopause = #{isMenopause,jdbcType=VARCHAR},
+      menopauseAge = #{menopauseAge,jdbcType=INTEGER},
+      nation = #{nation,jdbcType=VARCHAR},
+      occupation = #{occupation,jdbcType=VARCHAR},
+      height = #{height,jdbcType=DOUBLE},
+      weight = #{weight,jdbcType=DOUBLE},
+      cancerHistory = #{cancerHistory,jdbcType=VARCHAR},
+      inputName = #{inputName,jdbcType=VARCHAR},
+      inputTime = #{inputTime,jdbcType=VARCHAR},
+      updateName = #{updateName,jdbcType=VARCHAR},
+      updateTime = #{updateTime,jdbcType=VARCHAR}
+    where tid = #{tid,jdbcType=INTEGER}
+  </update>
+</mapper>

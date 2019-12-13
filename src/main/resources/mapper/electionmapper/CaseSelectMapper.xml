@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.uscilims.election.dao.CaseSelectMapper">
+  <resultMap id="BaseResultMap" type="com.uscilims.election.entity.CaseSelect">
+    <id column="tid" jdbcType="INTEGER" property="tid" />
+    <result column="patientNo" jdbcType="VARCHAR" property="patientNo" />
+    <result column="isSign" jdbcType="VARCHAR" property="isSign" />
+    <result column="signTime" jdbcType="VARCHAR" property="signTime" />
+    <result column="ruxuan1" jdbcType="VARCHAR" property="ruxuan1" />
+    <result column="ruxuan2" jdbcType="VARCHAR" property="ruxuan2" />
+    <result column="ruxuan3" jdbcType="VARCHAR" property="ruxuan3" />
+    <result column="ruxuan4" jdbcType="VARCHAR" property="ruxuan4" />
+    <result column="ruxuan5" jdbcType="VARCHAR" property="ruxuan5" />
+    <result column="ruxuan6" jdbcType="VARCHAR" property="ruxuan6" />
+    <result column="paichu1" jdbcType="VARCHAR" property="paichu1" />
+    <result column="paichu2" jdbcType="VARCHAR" property="paichu2" />
+    <result column="paichu3" jdbcType="VARCHAR" property="paichu3" />
+    <result column="inputName" jdbcType="VARCHAR" property="inputName" />
+    <result column="inputTime" jdbcType="VARCHAR" property="inputTime" />
+    <result column="updateName" jdbcType="VARCHAR" property="updateName" />
+    <result column="updateTime" jdbcType="VARCHAR" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    tid, patientNo, isSign, signTime, ruxuan1, ruxuan2, ruxuan3, ruxuan4, ruxuan5, ruxuan6, 
+    paichu1, paichu2, paichu3, inputName, inputTime, updateName, updateTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from case_select
+    where tid = #{tid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from case_select
+    where tid = #{tid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.uscilims.election.entity.CaseSelect">
+    insert into case_select (tid, patientNo, isSign, 
+      signTime, ruxuan1, ruxuan2, 
+      ruxuan3, ruxuan4, ruxuan5, 
+      ruxuan6, paichu1, paichu2, 
+      paichu3, inputName, inputTime, 
+      updateName, updateTime)
+    values (#{tid,jdbcType=INTEGER}, #{patientNo,jdbcType=VARCHAR}, #{isSign,jdbcType=VARCHAR}, 
+      #{signTime,jdbcType=VARCHAR}, #{ruxuan1,jdbcType=VARCHAR}, #{ruxuan2,jdbcType=VARCHAR}, 
+      #{ruxuan3,jdbcType=VARCHAR}, #{ruxuan4,jdbcType=VARCHAR}, #{ruxuan5,jdbcType=VARCHAR}, 
+      #{ruxuan6,jdbcType=VARCHAR}, #{paichu1,jdbcType=VARCHAR}, #{paichu2,jdbcType=VARCHAR}, 
+      #{paichu3,jdbcType=VARCHAR}, #{inputName,jdbcType=VARCHAR}, #{inputTime,jdbcType=VARCHAR}, 
+      #{updateName,jdbcType=VARCHAR}, #{updateTime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.uscilims.election.entity.CaseSelect">
+    insert into case_select
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tid != null">
+        tid,
+      </if>
+      <if test="patientNo != null">
+        patientNo,
+      </if>
+      <if test="isSign != null">
+        isSign,
+      </if>
+      <if test="signTime != null">
+        signTime,
+      </if>
+      <if test="ruxuan1 != null">
+        ruxuan1,
+      </if>
+      <if test="ruxuan2 != null">
+        ruxuan2,
+      </if>
+      <if test="ruxuan3 != null">
+        ruxuan3,
+      </if>
+      <if test="ruxuan4 != null">
+        ruxuan4,
+      </if>
+      <if test="ruxuan5 != null">
+        ruxuan5,
+      </if>
+      <if test="ruxuan6 != null">
+        ruxuan6,
+      </if>
+      <if test="paichu1 != null">
+        paichu1,
+      </if>
+      <if test="paichu2 != null">
+        paichu2,
+      </if>
+      <if test="paichu3 != null">
+        paichu3,
+      </if>
+      <if test="inputName != null">
+        inputName,
+      </if>
+      <if test="inputTime != null">
+        inputTime,
+      </if>
+      <if test="updateName != null">
+        updateName,
+      </if>
+      <if test="updateTime != null">
+        updateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tid != null">
+        #{tid,jdbcType=INTEGER},
+      </if>
+      <if test="patientNo != null">
+        #{patientNo,jdbcType=VARCHAR},
+      </if>
+      <if test="isSign != null">
+        #{isSign,jdbcType=VARCHAR},
+      </if>
+      <if test="signTime != null">
+        #{signTime,jdbcType=VARCHAR},
+      </if>
+      <if test="ruxuan1 != null">
+        #{ruxuan1,jdbcType=VARCHAR},
+      </if>
+      <if test="ruxuan2 != null">
+        #{ruxuan2,jdbcType=VARCHAR},
+      </if>
+      <if test="ruxuan3 != null">
+        #{ruxuan3,jdbcType=VARCHAR},
+      </if>
+      <if test="ruxuan4 != null">
+        #{ruxuan4,jdbcType=VARCHAR},
+      </if>
+      <if test="ruxuan5 != null">
+        #{ruxuan5,jdbcType=VARCHAR},
+      </if>
+      <if test="ruxuan6 != null">
+        #{ruxuan6,jdbcType=VARCHAR},
+      </if>
+      <if test="paichu1 != null">
+        #{paichu1,jdbcType=VARCHAR},
+      </if>
+      <if test="paichu2 != null">
+        #{paichu2,jdbcType=VARCHAR},
+      </if>
+      <if test="paichu3 != null">
+        #{paichu3,jdbcType=VARCHAR},
+      </if>
+      <if test="inputName != null">
+        #{inputName,jdbcType=VARCHAR},
+      </if>
+      <if test="inputTime != null">
+        #{inputTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateName != null">
+        #{updateName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.uscilims.election.entity.CaseSelect">
+    update case_select
+    <set>
+      <if test="patientNo != null">
+        patientNo = #{patientNo,jdbcType=VARCHAR},
+      </if>
+      <if test="isSign != null">
+        isSign = #{isSign,jdbcType=VARCHAR},
+      </if>
+      <if test="signTime != null">
+        signTime = #{signTime,jdbcType=VARCHAR},
+      </if>
+      <if test="ruxuan1 != null">
+        ruxuan1 = #{ruxuan1,jdbcType=VARCHAR},
+      </if>
+      <if test="ruxuan2 != null">
+        ruxuan2 = #{ruxuan2,jdbcType=VARCHAR},
+      </if>
+      <if test="ruxuan3 != null">
+        ruxuan3 = #{ruxuan3,jdbcType=VARCHAR},
+      </if>
+      <if test="ruxuan4 != null">
+        ruxuan4 = #{ruxuan4,jdbcType=VARCHAR},
+      </if>
+      <if test="ruxuan5 != null">
+        ruxuan5 = #{ruxuan5,jdbcType=VARCHAR},
+      </if>
+      <if test="ruxuan6 != null">
+        ruxuan6 = #{ruxuan6,jdbcType=VARCHAR},
+      </if>
+      <if test="paichu1 != null">
+        paichu1 = #{paichu1,jdbcType=VARCHAR},
+      </if>
+      <if test="paichu2 != null">
+        paichu2 = #{paichu2,jdbcType=VARCHAR},
+      </if>
+      <if test="paichu3 != null">
+        paichu3 = #{paichu3,jdbcType=VARCHAR},
+      </if>
+      <if test="inputName != null">
+        inputName = #{inputName,jdbcType=VARCHAR},
+      </if>
+      <if test="inputTime != null">
+        inputTime = #{inputTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateName != null">
+        updateName = #{updateName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        updateTime = #{updateTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where tid = #{tid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.uscilims.election.entity.CaseSelect">
+    update case_select
+    set patientNo = #{patientNo,jdbcType=VARCHAR},
+      isSign = #{isSign,jdbcType=VARCHAR},
+      signTime = #{signTime,jdbcType=VARCHAR},
+      ruxuan1 = #{ruxuan1,jdbcType=VARCHAR},
+      ruxuan2 = #{ruxuan2,jdbcType=VARCHAR},
+      ruxuan3 = #{ruxuan3,jdbcType=VARCHAR},
+      ruxuan4 = #{ruxuan4,jdbcType=VARCHAR},
+      ruxuan5 = #{ruxuan5,jdbcType=VARCHAR},
+      ruxuan6 = #{ruxuan6,jdbcType=VARCHAR},
+      paichu1 = #{paichu1,jdbcType=VARCHAR},
+      paichu2 = #{paichu2,jdbcType=VARCHAR},
+      paichu3 = #{paichu3,jdbcType=VARCHAR},
+      inputName = #{inputName,jdbcType=VARCHAR},
+      inputTime = #{inputTime,jdbcType=VARCHAR},
+      updateName = #{updateName,jdbcType=VARCHAR},
+      updateTime = #{updateTime,jdbcType=VARCHAR}
+    where tid = #{tid,jdbcType=INTEGER}
+  </update>
+</mapper>
